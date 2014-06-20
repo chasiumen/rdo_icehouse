@@ -49,20 +49,20 @@ COLOR_DEFAULT='\033[0m'
 #Check ROOT permission
 if [[ $UID != 0 ]]; then
     echo -e "${COLOR_RED}Please run this script as root or sudo!${COLOR_DEFAULT}"
-    exit 1
+    exit 1 
 else
     echo -e "${COLOR_LIGHT_BLUE}ROOT/SUDO run\t\t\t${COLOR_LIGHT_GREEN}[OK]${COLOR_DEFAULT}"
     echo -e "${COLOR_RED}Network Information${COLOR_DEFAULT}"
 
-    echo -e "${YELLOW}"Network Node${COLOR_DEFAULT}"
+    echo -e "${YELLOW}Network Node${COLOR_DEFAULT}"
     echo -e "${COLOR_LIGHT_GREEN}PUBLIC  | $NIC1: ${COLOR_YELLOW}$NET_PUB${COLOR_DEFAULT}"
     echo -e "${COLOR_LIGHT_GREEN}PRIVATE | $NIC2: ${COLOR_YELLOW}$NET_PRI${COLOR_DEFAULT}"
 
-    echo -e "${YELLOW}"Compute Node${COLOR_DEFAULT}"
-    echo -e "${COLOR_LIGHT_GREEN}PUBLIC  | $NIC1: ${COLOR_YELLOW}$COMP_PUB${COLOR_DEFAULT}"
-    echo -e "${COLOR_LIGHT_GREEN}PRIVATE | $NIC2: ${COLOR_YELLOW}$COMP_PRI${COLOR_DEFAULT}"
+    echo -e "${YELLOW}Compute Node${COLOR_DEFAULT}"
+    echo -e "${COLOR_LIGHT_GREEN}PUBLIC  | $NIC1\: ${COLOR_YELLOW}$COMP_PUB${COLOR_DEFAULT}"
+    echo -e "${COLOR_LIGHT_GREEN}PRIVATE | $NIC2\: ${COLOR_YELLOW}$COMP_PRI${COLOR_DEFAULT}"
 
-    echo -e "${YELLOW}"Controller  Node${COLOR_DEFAULT}"
+    echo -e "${YELLOW}Controller  Node${COLOR_DEFAULT}"
     echo -e "${COLOR_LIGHT_GREEN}PUBLIC  | $NIC1: ${COLOR_YELLOW}$CONT_PUB${COLOR_DEFAULT}"
     echo -e "${COLOR_LIGHT_GREEN}PRIVATE | $NIC2: ${COLOR_YELLOW}$CONT_PRI${COLOR_DEFAULT}"
 
