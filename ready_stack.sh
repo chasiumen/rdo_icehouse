@@ -88,6 +88,10 @@ _SYSCTLCONF_
             /sbin/chkconfig ntpd on
             /sbin/service ntpd restart
 
+            #sshd config | allow root login
+            /bin/sed -i.org -e 's/PermitRootLogin no/PermitRootLogin yes/gi' /etc/ssh/sshd_config
+            /sbin/service sshd reload
+
             #update package
             /usr/bin/yum -y update
             
