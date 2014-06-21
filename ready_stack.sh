@@ -73,7 +73,15 @@ _SYSCTLCONF_
             /bin/echo 'echo 0 > /proc/sys/net/bridge/bridge-nf-call-arptables' >> /etc/rc.local
             
             /sbin/sysctl -p /etc/sysctl.conf
-            
+
+#            #add resolver (optional)
+#            /bin/cp -f ./conf/add_resolv.sh /root/
+#            /bin/cat << _DNS_ >> /etc/rc.d/rc.local
+##add dns
+#./root/add_resolv.sh
+#_DNS_
+
+                        
             ## add EPEL repo
             /bin/rpm --import http://ftp.riken.jp/Linux/fedora/epel/RPM-GPG-KEY-EPEL-6
             /bin/rpm -ivh http://ftp.riken.jp/Linux/fedora/epel/6/${ARC}/epel-release-6-8.noarch.rpm

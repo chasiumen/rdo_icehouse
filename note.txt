@@ -1,4 +1,29 @@
 
+service NetworkManager stop 
+chkconfig NetworkManager off
+
+ONBOOT=yes
+NM_CONTROLLED=no
+BOOTPROTO=static
+IPADDR=10.0.1.2
+NETMASK=255.255.255.0
+DNS1=10.0.1.2
+
+
+
+add_resolve.sh
+
+#!/bin/bash
+
+cat << _DNS_ >> /etc/resolv.conf
+nameserver 192.168.1.147
+search ryosukemorino.com
+_DNS_
+
+
+
+
+
 Public Network
 192.168.1.0/24
 Private Network
