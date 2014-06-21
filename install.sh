@@ -120,8 +120,12 @@ else
     #disable DEMO account/network
     /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=[a-zA-Z0-9]\+/CONFIG_PROVISION_DEMO=n/' /root/answer.txt
     
-    #disable CEILOMETER install
+    #disable CEILOMETER installation
     /bin/sed -i.org -e "s/CONFIG_CEILOMETER_INSTALL=y/CONFIG_CEILOMETER_INSTALL=n/" /root/answer.txt
+
+    #disable NAGIO installation
+    /bin/sed -i.org -e "s/CONFIG_NAGIOS_INSTALL=y/CONFIG_NAGIOS_INSTALL=n/" /root/answer.txt
+
 
     #Run packstack with customized answer file
     /usr/bin/packstack --answer-file=/root/answer.txt
