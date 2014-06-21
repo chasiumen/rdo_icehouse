@@ -100,6 +100,12 @@ _SYSCTLCONF_
             /bin/sed -i.org -e 's/PermitRootLogin no/PermitRootLogin yes/gi' /etc/ssh/sshd_config
             /sbin/service sshd reload
 
+            #mysql install
+            /usr/bin/yum install -y mysql-server
+            /sbin/chkconfig mysqld on
+            /sbin/server mysqld restart
+
+
             #update package
             /usr/bin/yum -y update
             

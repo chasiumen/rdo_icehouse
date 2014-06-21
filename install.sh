@@ -9,6 +9,7 @@
 #variables
 #Dashboard admin password
 PASS='admin'
+MYSQL_PASS='arcueid\$0326'
 
 
 #NIC
@@ -68,13 +69,21 @@ else
 
 
     #----------Install RDO-------------------
-    /usr/bin/yum -y install openstack-packstack python-netaddr
+    /usr/bin/yum -y install openstack-packstack
     
     
     #Create answer file
     /usr/bin/packstack --gen-answer-file=/root/answer.txt
     
     #Edit Answer file
+    #CINDER
+#    /bin/sed -i.org -e "s/CONFIG_CINDER_INSTALL=y/CONFIG_CINDER_INSTALL=n/" /root/answer.txt
+#    /bin/sed -i.org -e "s/CONFIG_CINDER_VOLUMES_CREATE=y/CONFIG_CINDER_VOLUMES_CREATE=n/" /root/answer.txt
+
+
+    #MYSQL CONFIG
+    /bin/sed -i.org -e "s/CONFIG_MYSQL_INSTALL=y/CONFIG_MYSQL_INSTALL=n/" /root/answer.txt
+    /bin/sed -i.org -e "s/CONFIG_MYSQL_PW=[a-zA-Z0-9]\+/CONFIG_MYSQL_PW=$MYSQL_PASS/" /root/answer.txt
 
     #NOVA CONFIG
     /bin/sed -i.org -e "s/CONFIG_NOVA_COMPUTE_HOSTS=[a-zA-Z0-9]\+/CONFIG_NOVA_COMPUTE_HOSTS=$NET_PRI/" /root/answer.txt
@@ -104,7 +113,9 @@ else
     #disable DEMO account/network
     /bin/sed -i.org -e 's/CONFIG_PROVISION_DEMO=[a-zA-Z0-9]\+/CONFIG_PROVISION_DEMO=n/' /root/answer.txt
     
-    
+    #disable CEILOMETER install
+    /bin/sed -i.org -e "s/CONFIG_CEILOMETER_INSTALL=y/CONFIG_CEILOMETER_INSTALL=n/" /root/answer.txt
+
     #Run packstack with customized answer file
     /usr/bin/packstack --answer-file=/root/answer.txt
     
